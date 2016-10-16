@@ -7,6 +7,7 @@
 ##1.	Követelményanalízis
 ###1.1. Célkitűzés, projektindító dokumentum
 Az alkalmazás fő feladata receptek, azok elkészítésének módja és hozzávalók jól átlátható megjelenítése. Az adatok védelmének érdekében legyen lehetőség regisztrációra, majd bejelentkezésre. A bejelentkezett felhasználó a receptek listáját megtekintheti, bővítheti, meglévő recepteket módosíthatja, törölheti, kommenteket írhat hozzájuk.
+
 ###1.2. Funkcionális követelmények
 - Kellően megbízható (biztonsági szempontból) és stabil szerveroldal - Backend
 - Az oldal fő funkciójához csak regiszrtált felhasználók férhetnek hozzá.
@@ -16,12 +17,14 @@ Az alkalmazás fő feladata receptek, azok elkészítésének módja és hozzáv
   - meglévő recept szerkesztése
   - meglévő recept törlése
   - komment írása
+
 ###1.3. Nem funkcionális követelmények
 - Az általános JavaScript konvencióknak való megfelelés.
 - Az általános UX/UI-nak való megfelelés.
 - Könnyű áttekinthetőség, ésszerű elrendezés, könnyen kezelhetőség.
 - Jelszóval védett funkciók, és a jelszavak védelme a háttérben. Hibásan bevitt adatok esetén a program jól láthatóan jelezzen a felhasználónak, és emelje ki a hibás beviteli mezőket. A jól bevitt adatok maradjanak az űrlapban.
 - Könnyen lehessen bővíteni, a különböző típusú fájlok külön csoportosítva, ésszerűen legyenek felbontva, a könnyebb fejleszthetőség miatt.
+
 ###1.4. Használatieset-modell
 Vendég: Csak a publikus oldalakat éri el
 
@@ -38,10 +41,15 @@ Bejelentkezett felhasználó: A publikus oldalak elérésén felül egyéb funkc
 -	Komment írása
 
 ###1.5. Szakterületi fogalomjegyzék
+recept: étel elkészítéséhez szükséges hozzávalók és az elkészítés lépéseit tartalmazó leírás
 
-ek - evőkanál
-kk - kávés kanál
-csipet
+ek: evőkanál
+
+kk: kávéskanál
+
+tk: teáskanál
+
+csipet: 1 gramm
 
 ##2. Tervezés
 
@@ -53,19 +61,29 @@ csipet
 
 ####2.1.2. Oldaltérkép:
 
-Publikus:
+**Publikus:**
+
 Főoldal
+
 Bejelentkezés
+
 Regisztráció
 
-Bejelentkezett:
+**Bejelentkezett:**
+
 Főoldal
+
 Új recept felvétele
+
 Listaoldal
-Recept megtekintése
-Recept törlése 
-Recept szerkesztése 
-Megjegyzés hozzáfűzése
+
+    Recept megtekintése
+  
+    Recept törlése
+  
+      Recept szerkesztése
+    
+      Megjegyzés hozzáfűzése
 
 ####2.1.3. Végpontok
 
@@ -87,7 +105,9 @@ Megjegyzés hozzáfűzése
 ###2.2. Felhasználói-felület modell
 
 ####2.2.1.Oldalvázlatok:
+
 Főoldal
+
 ![](docs/images/fooldal.JPG)
 
 Regisztrációs oldal
