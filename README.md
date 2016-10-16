@@ -77,13 +77,13 @@ Főoldal
 
 Listaoldal
 
-    Recept megtekintése
+Recept megtekintése
   
-    Recept törlése
+Recept törlése
   
-      Recept szerkesztése
+Recept szerkesztése
     
-      Megjegyzés hozzáfűzése
+Megjegyzés hozzáfűzése
 
 ####2.1.3. Végpontok
 
@@ -107,7 +107,6 @@ Listaoldal
 ####2.2.1.Oldalvázlatok:
 
 Főoldal
-
 ![](docs/images/fooldal.JPG)
 
 Regisztrációs oldal
