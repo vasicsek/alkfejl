@@ -69,20 +69,20 @@ Megjegyzés hozzáfűzése
 
 ####2.1.3. Végpontok
 
-GET/: főoldal
-GET/login: bejelentkező oldal
-POST/login: bejelentkező adatok felküldése
-GET/login/signup: regisztrációs oldal
-POST/login/signup: regisztrációs adatok felküldése
-GET/logout: kijelentkező oldal
-GET/recipes/list: receptlista oldal
-GET/recipes/new: új recept felvétele
-POST/recipes/new: új recept felvételéhez szükséges adatok felküldése
-GET/recipes/id: recept adatok
-POST/recipes/id: új megjegyzés felvitele
-GET/recipes/delete=id: recept törlése
-GET/recipes/edit=id: recept módosítása
-POST/recipes/edit=id: recept módosítása, adatok felküldése
+- GET/: főoldal
+- GET/login: bejelentkező oldal
+- POST/login: bejelentkező adatok felküldése
+- GET/login/signup: regisztrációs oldal
+- POST/login/signup: regisztrációs adatok felküldése
+- GET/logout: kijelentkező oldal
+- GET/recipes/list: receptlista oldal
+- GET/recipes/new: új recept felvétele
+- POST/recipes/new: új recept felvételéhez szükséges adatok felküldése
+- GET/recipes/id: recept adatok
+- POST/recipes/id: új megjegyzés felvitele
+- GET/recipes/delete=id: recept törlése
+- GET/recipes/edit=id: recept módosítása
+- POST/recipes/edit=id: recept módosítása, adatok felküldése
 
 ###2.2. Felhasználói-felület modell
 
@@ -121,7 +121,5 @@ Adatbázisterv
 ####2.2.3. Dinamikus működés
 
 Szekvenciadiagram
-
-Vegyünk példának a regisztrációt, majd egy új elem felvételét, szerkesztését, törlését, mindezt szekvenciadiagrammon.
 
 ![](docs/images/alkfejlszekvencia.png)
