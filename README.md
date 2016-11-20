@@ -1,8 +1,13 @@
 #Vasicsek Gábor IOP8IZ
+
 ###Dokumentáció
+
 ###Tantárgyak felvétele (mini Neptun)
+
 ##Követelményanalízis
+
 ###Funkcionális követelmények
+
 - Vendégként a tantárgyak a főoldalon megtekinthetőek.
 - Vendégként a tantárgyak szabadon böngészhetőek.
 - Vendégként a tantárgyak adatai megtekinthetőek.
@@ -12,17 +17,26 @@
 - Felhasználóként van lehetőség saját adatok módosítására.
 - Felhasználóként van lehetőség új tantárgy felvételére.
 - Felhasználóként van lehetőség tantárgyak módosítására, törlésére.
+
 ###Nem funkcionális követelmények
+
 - Felhasználóbarát, ergonomikus elrendezés és kinézet.
 - Gyors működés.
 - Biztonságos működés: jelszavak tárolása, funkciókhoz való hozzáférés.
+
 ###Szerepkörök
+
 - Vendég: Tantárgyak keresését, böngészését és megtekintését végezheti.
 - Felhasználó: A vendég szerepkörén túl a saját tantárgyainak kezelésére (új, módosít, törlés) képes.
+
 ###Használati esetek
-![](docs/images/alkfejlusecasediagramm.PNG)
+
+![](docs/images/alkfejlusecasediagramm.png)
+
 ##Tervezés
+
 ###Oldaltérkép
+
 Publikus:
 
 - Főoldal
@@ -37,7 +51,9 @@ Felhasználó
 - Profiladatok
     + Profiladatok szerkesztése
 - Új tantárgy felvitele
+
 ###Végpontok
+
 - GET/: főoldal
 - GET/login: bejelentkező oldal
 - POST/login: bejelentkezési adatok felküldése
@@ -57,7 +73,9 @@ Felhasználó
 - GET/users/:id/edit: felhasználó módosítása
 - POST/users/:id/edit: felhasználó módosítása, adatok küldése
 - GET/search: keresés
+
 ###Oldalvázlatok
+
 ![](docs/images/fooldal.PNG)
 ![](docs/images/bejelentkezes.PNG)
 ![](docs/images/regisztracio.PNG)
@@ -70,20 +88,32 @@ Felhasználó
 ![](docs/images/felhasznalomegtekint.PNG)
 ![](docs/images/felhasznaloszerkeszt.PNG)
 ![](docs/images/keres.PNG)
+
 ###Adatmodell
+
 ![](docs/images/alkfejlmodell.png)
+
 ##Implementáció
+
 ###Fejlesztői környezet
+
 - Visual Studio Code
 - Node.js
 - Adonis.js
 - Git + Github
+
 ###Könyvtárstruktúra
+
 ##Felhasználói dokumentáció
+
 ###A futtatáshoz ajánlott hardver-, szoftver konfiguráció
+
 - Futtatáshoz szükséges operációs rendszer: Tetszőleges operációs rendszer
 - A futtatáshoz szükséges hardver: Operációs rendszerek szerint megadva
 - Egyéb követelmények: Internet böngésző telepítése, JavaScript ajánlott
+
 ###Telepítés lépései
+
 - Terminál nyitása -> git clone https://github.com/vasicsek/alkfejl.git -> cd neptun -> npm start
+
 ###A program használata
