@@ -1,144 +1,89 @@
 #Vasicsek Gábor IOP8IZ
-
 ###Dokumentáció
+###Tantárgyak felvétele (mini Neptun)
+##Követelményanalízis
+###Funkcionális követelmények
+- Vendégként a tantárgyak a főoldalon megtekinthetőek.
+- Vendégként a tantárgyak szabadon böngészhetőek.
+- Vendégként a tantárgyak adatai megtekinthetőek.
+- Vendégként a tantárgyak kereshetőek.
+- Vendégként van lehetőség regisztrációra.
+- Felhasználóként van lehetőség belépni az oldalra.
+- Felhasználóként van lehetőség saját adatok módosítására.
+- Felhasználóként van lehetőség új tantárgy felvételére.
+- Felhasználóként van lehetőség tantárgyak módosítására, törlésére.
+###Nem funkcionális követelmények
+- Felhasználóbarát, ergonomikus elrendezés és kinézet.
+- Gyors működés.
+- Biztonságos működés: jelszavak tárolása, funkciókhoz való hozzáférés.
+###Szerepkörök
+- Vendég: Tantárgyak keresését, böngészését és megtekintését végezheti.
+- Felhasználó: A vendég szerepkörén túl a saját tantárgyainak kezelésére (új, módosít, törlés) képes.
+###Használati esetek
+![](docs/images/alkfejlusecasediagramm.PNG)
+##Tervezés
+###Oldaltérkép
+Publikus:
 
-###Recept
+- Főoldal
+- Tantárgyak böngészése
+    + Tantárgy megtekintése
+- Belépés
+- Regisztráció
 
-##1.	Követelményanalízis
-###1.1. Célkitűzés, projektindító dokumentum
-Az alkalmazás fő feladata receptek, azok elkészítésének módja és hozzávalók jól átlátható megjelenítése. Az adatok védelmének érdekében legyen lehetőség regisztrációra, majd bejelentkezésre. A bejelentkezett felhasználó a receptek listáját megtekintheti, bővítheti, meglévő recepteket módosíthatja, törölheti, kommenteket írhat hozzájuk.
+Felhasználó
 
-###1.2. Funkcionális követelmények
-- Kellően megbízható (biztonsági szempontból) és stabil szerveroldal - Backend
-- Az oldal fő funkciójához csak regiszrtált felhasználók férhetnek hozzá.
-- Csak bejelentkezett felhasználók által elérhető funkciók
-  - új recept felvétele
-  - meglévő recept megtekintése
-  - meglévő recept szerkesztése
-  - meglévő recept törlése
-  - komment írása
-
-###1.3. Nem funkcionális követelmények
-- Az általános JavaScript konvencióknak való megfelelés.
-- Az általános UX/UI-nak való megfelelés.
-- Könnyű áttekinthetőség, ésszerű elrendezés, könnyen kezelhetőség.
-- Jelszóval védett funkciók, és a jelszavak védelme a háttérben. Hibásan bevitt adatok esetén a program jól láthatóan jelezzen a felhasználónak, és emelje ki a hibás beviteli mezőket. A jól bevitt adatok maradjanak az űrlapban.
-- Könnyen lehessen bővíteni, a különböző típusú fájlok külön csoportosítva, ésszerűen legyenek felbontva, a könnyebb fejleszthetőség miatt.
-
-###1.4. Használatieset-modell
-Vendég: Csak a publikus oldalakat éri el
-
--	Főoldal
--	Bejelentkezés
--	Regisztráció
-
-Bejelentkezett felhasználó: A publikus oldalak elérésén felül egyéb funkciókhoz is hozzáfér.
-
--	Új recept felvétele
--	Meglévő recept megtekintése
--	Meglévő recept szerkesztése
--	Meglévő recept törlése
--	Komment írása
-
-###1.5. Szakterületi fogalomjegyzék
-recept: étel elkészítéséhez szükséges hozzávalók és az elkészítés lépéseit tartalmazó leírás
-
-ek: evőkanál
-
-kk: kávéskanál
-
-tk: teáskanál
-
-csipet: 1 gramm
-
-##2. Tervezés
-
-###2.1.	Architektúra terv
-
-####2.1.1. Komponensdiagram
-
-![](docs/images/alkfejlusecasediagramm.png)
-
-####2.1.2. Oldaltérkép:
-
-**Publikus:**
-
-Főoldal
-
-Bejelentkezés
-
-Regisztráció
-
-**Bejelentkezett:**
-
-Főoldal
-
-Új recept felvétele
-
-Listaoldal
-
-Recept megtekintése
-  
-Recept törlése
-  
-Recept szerkesztése
-    
-Megjegyzés hozzáfűzése
-
-####2.1.3. Végpontok
-
+- Kilépés
+- Profiladatok
+    + Profiladatok szerkesztése
+- Új tantárgy felvitele
+###Végpontok
 - GET/: főoldal
 - GET/login: bejelentkező oldal
-- POST/login: bejelentkező adatok felküldése
-- GET/login/signup: regisztrációs oldal
-- POST/login/signup: regisztrációs adatok felküldése
+- POST/login: bejelentkezési adatok felküldése
+- GET/register: regisztráció oldal
+- POST/register: regisztrációs adatok felküldése
 - GET/logout: kijelentkező oldal
-- GET/recipes/list: receptlista oldal
-- GET/recipes/new: új recept felvétele
-- POST/recipes/new: új recept felvételéhez szükséges adatok felküldése
-- GET/recipes/id: recept adatok
-- POST/recipes/id: új megjegyzés felvitele
-- GET/recipes/delete=id: recept törlése
-- GET/recipes/edit=id: recept módosítása
-- POST/recipes/edit=id: recept módosítása, adatok felküldése
-
-###2.2. Felhasználói-felület modell
-
-####2.2.1.Oldalvázlatok:
-
-Főoldal
-![](docs/images/fooldal.JPG)
-
-Regisztrációs oldal
-![](docs/images/regisztracio.JPG)
-
-Bejelentkező oldal
-![](docs/images/bejelentkezes.JPG)
-
-Koktél listaoldal
-![](docs/images/receptlista.JPG)
-
-Új koktél felvétele
-![](docs/images/felvesz.JPG)
-
-Koktél megtekintése
-![](docs/images/megjelenit.JPG)
-
-Koktél szerkesztése
-![](docs/images/szerkeszt.JPG)
-
-####2.2.2. Osztálymodell
- 
-Adatmodell
-
+- GET/ownSubjects: saját tantárgyak listázása
+- GET/subjects/create: új tantárgy felvitele, űrlap megjelnítése
+- POST/subjects/create: új tantárgy felvitele, adatok küldése
+- GET/subjects/:id: tantárgy megtekintése
+- GET/subjects/:id/edit: tantárgy módosítása
+- POST/subjects/:id/edit: tantárgy módosítása, adatok küldése
+- GET/subjects/:id/delete: tantárgy törlése
+- GET/users/list: felhasználók listázása
+- GET/users/:id: felhasználó megtekintése
+- GET/users/:id/delete: felhasználó törlése
+- GET/users/:id/edit: felhasználó módosítása
+- POST/users/:id/edit: felhasználó módosítása, adatok küldése
+- GET/search: keresés
+###Oldalvázlatok
+![](docs/images/fooldal.PNG)
+![](docs/images/bejelentkezes.PNG)
+![](docs/images/regisztracio.PNG)
+![](docs/images/fooldal2.PNG)
+![](docs/images/felvesz.PNG)
+![](docs/images/megtekint.PNG)
+![](docs/images/szerkeszt.PNG)
+![](docs/images/fooldal3.PNG)
+![](docs/images/felhasznalok.PNG)
+![](docs/images/felhasznalomegtekint.PNG)
+![](docs/images/felhasznaloszerkeszt.PNG)
+![](docs/images/keres.PNG)
+###Adatmodell
 ![](docs/images/alkfejlmodell.png)
- 
-Adatbázisterv
-
-![](docs/images/alkfejlterv.png)
-
-####2.2.3. Dinamikus működés
-
-Szekvenciadiagram
-
-![](docs/images/alkfejlszekvencia.png)
+##Implementáció
+###Fejlesztői környezet
+- Visual Studio Code
+- Node.js
+- Adonis.js
+- Git + Github
+###Könyvtárstruktúra
+##Felhasználói dokumentáció
+###A futtatáshoz ajánlott hardver-, szoftver konfiguráció
+- Futtatáshoz szükséges operációs rendszer: Tetszőleges operációs rendszer
+- A futtatáshoz szükséges hardver: Operációs rendszerek szerint megadva
+- Egyéb követelmények: Internet böngésző telepítése, JavaScript ajánlott
+###Telepítés lépései
+- Terminál nyitása -> git clone https://github.com/vasicsek/alkfejl.git -> cd neptun -> npm start
+###A program használata

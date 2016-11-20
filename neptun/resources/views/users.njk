@@ -1,0 +1,27 @@
+{% extends "layout" %}
+
+{% block content %}
+
+<h1>{{ name }}</h1>
+
+<div class="row">
+
+  
+  <div class="col-lg-4 col-md-6 col-sm-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Felhasználók</div>
+      <ul class="list-group">
+        {% for user in users %}
+        <li class="list-group-item">
+          <a href="/users/{{ user.id }}">
+            {{ user.username }} 
+          </a>
+          : {{ user.created_at }}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "layout" %}
+
+{% block content %}
+<h2>{{ subject.name }}</h2>
+<p>{{ subject.type.name }}</p>
+<h3>Félév</h3>
+<pre>
+{{ subject.semester }}
+</pre>
+<h3>Kredit</h3>
+<pre>
+{{ subject.credit }}
+</pre>
+
+{% if (subject.user_id == currentUser.id or currentUser.id == 1) %}
+<a href="/subjects/{{ subject.id }}/edit" class="btn btn-default">Szerkeszt</a>
+<a href="/subjects/{{ subject.id }}/delete" class="btn btn-danger">Töröl</a>
+{% endif %}
+
+{% endblock %}

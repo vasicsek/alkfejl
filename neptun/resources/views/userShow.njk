@@ -1,0 +1,24 @@
+{% extends "layout" %}
+
+{% block content %}
+<h2>{{ user.username }}</h2>
+<p>{{ user.type.username }}</p>
+<h3>E-mail cím</h3>
+<pre>
+{{ user.email }}
+</pre>
+<h3>Regisztráció dátuma</h3>
+<pre>
+{{ user.created_at }}
+</pre>
+
+{% if (currentUser.id == 1) %}
+<a href="/users/{{ user.id }}/edit" class="btn btn-default">
+    Szerkeszt
+</a>
+<a href="/users/{{ user.id }}/delete" class="btn btn-danger">
+    Töröl
+</a>
+{% endif %}
+
+{% endblock %}

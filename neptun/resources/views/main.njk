@@ -1,0 +1,29 @@
+{% extends "layout" %}
+
+{% block content %}
+
+<h1>{{ name }}</h1>
+
+<div class="row">
+
+  {% for category in categories %}
+  {% if category.topSubjects.length > 0 %}
+  <div class="col-lg-4 col-md-6 col-sm-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">{{ category.name }}</div>
+      <ul class="list-group">
+        {% for subject in category.topSubjects %}
+        <li class="list-group-item">
+          <a href="/subjects/{{ subject.id }}">
+            {{ subject.name }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+
+</div>
+{% endblock %}
