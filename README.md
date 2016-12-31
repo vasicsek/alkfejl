@@ -31,7 +31,7 @@
 
 ###Használati esetek
 
-![](docs/images/alkfejlusecasediagramm.png)
+![](docs/images/alkfejlusecasediagram.png)
 
 ##Tervezés
 
@@ -144,6 +144,10 @@ Felhasználó
     - login.njk
     - UserController.njk
     - routes.js
+Szekvencia diagram:
+
+![](docs/images/funkcio.jpg)
+
 - (AJAX) Regisztrációra kattintva egy felugró ablak jelenik meg (kikapcsolt javascript mellett a register oldara urgunk)
     - register_popup.js
     - main.njk
@@ -159,9 +163,9 @@ Felhasználó
     - subjectCreate.njk
     - subjectEdit.njk
 
-####Tesztelés
+###Tesztelés
 
-Firefox böngészőhöz telepítjük a Selenium IDE kiegészítőt. Telepítés után elindítjuk a kiegészítőt, megnyitjuk a test mappában lévő teszteseteket, ezután a második zöld nyilra kattintva futtathatóak az előre elkészített tesztesetek.
+Firefox böngészőhöz telepítjük a Selenium IDE kiegészítőt. Telepítés után elindítjuk a kiegészítőt, megnyitjuk a test mappában lévő teszteseteket, ezután a csúszkát slow-re állítva a második zöld nyilra kattintva futtathatóak az előre elkészített tesztesetek.
 
 - User test: Program teljes körü tesztelése, új felhasználó regisztrálása, tantárgy felvétele, tantárgy módosítása, tantárgy törlése, adatok módosítása, kijelentkezés
 - Admin test: Admin funkciók tesztelése, bejelentkezés admin felhasználóval, felhasználók listázása, felhasználó adatainak módosítása, felhasználó térlése, kijelentkezés
