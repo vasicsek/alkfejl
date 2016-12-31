@@ -114,7 +114,7 @@ Felhasználó
 
 ###Telepítés lépései
 
-- Terminál nyitása -> git clone https://github.com/vasicsek/alkfejl.git -> cd neptun -> npm run dev
+- Terminál nyitása -> git clone https://github.com/vasicsek/alkfejl.git -> cd neptun -> (npm outdated -> npm update ->) npm run dev
 
 ###A program használata
 
