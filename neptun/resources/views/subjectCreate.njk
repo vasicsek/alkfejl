@@ -19,26 +19,32 @@
 {% endif %}
 
 
-<form class="form-horizontal" method="post">
+<form data-toggle="validator" class="form-horizontal" method="post" id="formAdd">
 
   {{ csrfField }}
 
-  <div class="form-group">
-    <label for="name" class="col-lg-2 control-label">Tantárgy neve</label>
+  <div class="form-group has-feedback">
+    <label for="name" class="col-lg-2 control-label">Tárgy neve</label>
     <div class="col-lg-10">
-      <input type="text" class="form-control" id="name" name="name" placeholder="Tantárgy neve" value="{{old('name')}}">
+      <input type="text" class="form-control" id="name" name="name" placeholder="Tárgy neve" value="{{old('name')}}" required>
+      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+      <div class="help-block with-errors"></div>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group has-feedback">
     <label for="semester" class="col-lg-2 control-label">Félév</label>
     <div class="col-lg-10">
-      <input type="text" class="form-control" id="semester" name="semester" placeholder="Félév" value="{{old('semester')}}">
+      <input type="text" class="form-control" id="semester" name="semester" placeholder="Félév" pattern="^[0-9]+$" value="{{old('semester')}}" required>
+      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+      <div class="help-block with-errors"></div>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group has-feedback">
     <label for="credit" class="col-lg-2 control-label">Kredit</label>
     <div class="col-lg-10">
-      <input type="text" class="form-control" id="credit" name="credit" placeholder="Kredit" value="{{old('credit')}}">
+      <input type="text" class="form-control" id="credit" name="credit" placeholder="Kredit" pattern="^[0-9]+$" value="{{old('credit')}}" required>
+      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+      <div class="help-block with-errors"></div>
     </div>
   </div>
   <div class="form-group">
@@ -64,3 +70,7 @@
 </form>
 
 {% endblock %}
+
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
+{% endblock %} 

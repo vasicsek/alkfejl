@@ -34,33 +34,29 @@
           {% if currentUser %}
           <ul class="nav navbar-nav">
               <li><a href="/ownSubjects">Tantárgyak listázása</a></li>
-              
-              <li><a href="/subjects/create">Tantárgy hozzadása</a></li>
+              <li><a id="btnAdd" href="/subjects/create">Tantárgy hozzadása</a></li>
               {% if currentUser.id == 1 %}
               <li><a href="/users/list">Felhasználók listázása</a></li>
               {% else %}
               <li><a href="/users/{{ currentUser.id }}/edit">Adataim módosítása</a></li>
               {% endif %}
-            <li>
-            <form name="input" action="/search" method="get" style="margin: 5px;">
-            <input type="text" class="form-control input-sm" id="search" name="search" placeholder="Keresés" value="{{old('search')}}">
-            </li>
-            
-            </form> 
-            
-          </ul>
-          
-
+              <li>
+              <form name="input" action="/search" method="get" style="margin: 5px;">
+              <input type="text" class="form-control input-sm" id="search" name="search" placeholder="Keresés" value="{{old('search')}}">
+              </li>
+              </form> 
           </ul>
           {% endif %}
-                    <ul class="nav navbar-nav navbar-right">
-            {% if currentUser %}
-              <li class="navbar-text">Üdv, {{ currentUser.username }}!</li>
-              <li><a href="/logout">Kilépés</a></li>
-            {% else %}
-              <li><a href="/login">Belépés</a></li>
-              <li><a href="/register">Regisztráció</a></li>
-            {% endif %}
+
+            <ul class="nav navbar-nav navbar-right">
+              {% if currentUser %}
+                <li class="navbar-text">Üdv, {{ currentUser.username }}!</li>
+                <li><a href="/logout">Kilépés</a></li>
+              {% else %}
+                <li><a id="btnLogin" href="/login">Belépés</a></li>
+                <li><a id="btnRegister" href="/register">Regisztráció</a></li>
+              {% endif %}
+            </ul>
           </div>
       </div>
     </nav>
@@ -73,5 +69,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% block scripts %}{% endblock %}
   </body>
 </html>

@@ -35,9 +35,14 @@ Route.get('/users/:id/edit', 'UserController.edit').middleware('auth')
 Route.post('/users/:id/edit', 'UserController.doEdit').middleware('auth')
 Route.get('/users/:id/delete', 'UserController.doDelete').middleware('auth')
 
-
 Route.get('/register', 'UserController.register')
 Route.get('/login', 'UserController.login')
 Route.post('/register', 'UserController.doRegister')
 Route.post('/login', 'UserController.doLogin')
 Route.get('/logout', 'UserController.doLogout')
+
+Route.group('ajax', function () {
+    Route.post('/login', 'UserController.ajaxLogin')
+    Route.post('/register', 'UserController.ajaxRegister')
+    Route.post('/create', 'SubjectController.ajaxCreate')
+}).prefix('/ajax')

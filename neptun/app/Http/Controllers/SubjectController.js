@@ -11,25 +11,25 @@ class SubjectController {
 
     const categories = yield Category.all()
 
-    for(let category of categories) {
+    for (let category of categories) {
       const subjects = yield category.subjects().fetch();
       category.topSubjects = subjects.toJSON();
     }
-  
-       yield response.sendView('main', {
+
+    yield response.sendView('main', {
       name: '',
       categories: categories.toJSON()
-    }) 
+    })
   }
 
-  * create (request, response) {
+  * create(request, response) {
     const categories = yield Category.all()
     yield response.sendView('subjectCreate', {
       categories: categories.toJSON()
     });
   }
 
-  * doCreate (request, response) {
+  * doCreate(request, response) {
     const subjectData = request.except('_csrf');
 
     const rules = {
@@ -44,7 +44,7 @@ class SubjectController {
     if (validation.fails()) {
       yield request
         .withAll()
-        .andWith({errors: validation.messages()})
+        .andWith({ errors: validation.messages() })
         .flash()
       response.redirect('back')
       return
@@ -55,7 +55,7 @@ class SubjectController {
     response.redirect('/')
   }
 
-  * edit (request, response) {
+  * edit(request, response) {
     const categories = yield Category.all()
     const id = request.param('id');
     const subject = yield Subject.find(id);
@@ -72,7 +72,7 @@ class SubjectController {
     });
   }
 
-  * doEdit (request, response) {
+  * doEdit(request, response) {
     const subjectData = request.except('_csrf');
 
     const rules = {
@@ -87,7 +87,7 @@ class SubjectController {
     if (validation.fails()) {
       yield request
         .withAll()
-        .andWith({errors: validation.messages()})
+        .andWith({ errors: validation.messages() })
         .flash()
       response.redirect('back')
       return
@@ -95,18 +95,18 @@ class SubjectController {
 
     const id = request.param('id');
     const subject = yield Subject.find(id);
-    
+
     subject.name = subjectData.name;
-    subject.semester = subjectData.semester; 
+    subject.semester = subjectData.semester;
     subject.credit = subjectData.credit;
     subject.category_id = subjectData.category_id;
 
     yield subject.save()
-    
+
     response.redirect('/')
   }
 
-  * show (request, response) {
+  * show(request, response) {
     const id = request.param('id');
     const subject = yield Subject.find(id);
     yield subject.related('category').load();
@@ -116,7 +116,7 @@ class SubjectController {
     })
   }
 
-  * doDelete (request, response) {
+  * doDelete(request, response) {
     const id = request.param('id');
     const subject = yield Subject.find(id);
 
@@ -129,19 +129,19 @@ class SubjectController {
     response.redirect('/')
   }
 
-  * ownList(request,response){
+  * ownList(request, response) {
     const categories = yield Category.all()
 
-    for(let category of categories) {
-      
-        const subjects = yield category.subjects().fetch();
+    for (let category of categories) {
 
-        var subjects2 = subjects.filter(i => i.user_id == request.currentUser.id) ;
-          if(request.currentUser.id == 1){
-            category.topSubjects = subjects.toJSON();
-          }else{
-            category.topSubjects = subjects2.toJSON();
-          }
+      const subjects = yield category.subjects().fetch();
+
+      var subjects2 = subjects.filter(i => i.user_id == request.currentUser.id);
+      if (request.currentUser.id == 1) {
+        category.topSubjects = subjects.toJSON();
+      } else {
+        category.topSubjects = subjects2.toJSON();
+      }
 
 
     }
@@ -149,26 +149,48 @@ class SubjectController {
     yield response.sendView('main', {
       name: '',
       categories: categories.toJSON()
-    })  
+    })
 
-    
+
   }
 
-  * search(request, response){
+  * search(request, response) {
     const categories = yield Category.all()
     var search = request.input('search');
 
-        for(let category of categories) {
-          const subjects = yield category.subjects().fetch();
-          var subjects2 = subjects.filter(i => i.name.indexOf(search) > -1);
-          category.topSubjects = subjects2.toJSON();
-        }
-      
-        yield response.sendView('main', {
-          name: '',
-          categories: categories.toJSON()
-        })  
-      }
+    for (let category of categories) {
+      const subjects = yield category.subjects().fetch();
+      var subjects2 = subjects.filter(i => i.name.indexOf(search) > -1);
+      category.topSubjects = subjects2.toJSON();
+    }
+
+    yield response.sendView('main', {
+      name: '',
+      categories: categories.toJSON()
+    })
   }
+
+  * ajaxCreate(request, response) {
+    const subjectData = request.except('_csrf');
+
+    const rules = {
+      name: 'required',
+      semester: 'required',
+      credit: 'required',
+      category_id: 'required'
+    };
+
+    const validation = yield Validator.validateAll(subjectData, rules)
+
+    if (validation.fails()) {
+      response.send({ success: false })
+      return
+    }
+
+    subjectData.user_id = request.currentUser.id
+    const subject = yield Subject.create(subjectData)
+    response.send({ success: true })
+  }
+}
 
 module.exports = SubjectController

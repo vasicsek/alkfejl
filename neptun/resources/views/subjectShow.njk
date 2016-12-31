@@ -13,8 +13,26 @@
 </pre>
 
 {% if (subject.user_id == currentUser.id or currentUser.id == 1) %}
+{{ csrfField | safe }}
 <a href="/subjects/{{ subject.id }}/edit" class="btn btn-default">Szerkeszt</a>
-<a href="/subjects/{{ subject.id }}/delete" class="btn btn-danger">Töröl</a>
+<a id="btnDelete" href="/subjects/{{ subject.id }}/delete" class="btn btn-danger">Töröl</a>
+<div class="modal fade confirm-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+        <div class="modal-body">
+            Biztosan törölni szeretnéd?
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success modal-ok" data-dismiss="modal">OK</button>
+            <button type="button" class="btn btn-danger modal-cancel" data-dismiss="modal">Mégse</button>
+        </div>
+        </div>
+    </div>
+</div>
 {% endif %}
+
+{% block scripts %}
+<script src="/scripts/delete.js"></script>
+{% endblock %}
 
 {% endblock %}
