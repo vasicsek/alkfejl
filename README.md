@@ -159,7 +159,7 @@ Felhasználó
     - subjectCreate.njk
     - subjectEdit.njk
 
-####Tesztelés
+###Tesztelés
 
 Firefox böngészőhöz telepítjük a Selenium IDE kiegészítőt. Telepítés után elindítjuk a kiegészítőt, megnyitjuk a test mappában lévő teszteseteket, ezután a második zöld nyilra kattintva futtathatóak az előre elkészített tesztesetek.
 
